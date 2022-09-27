@@ -1,0 +1,29 @@
+<nav class="row justify-content-end mt-2">
+  <a href="/medicineReminders" class=" col-1 btn btn-primary">Reminders</a>
+  <a href="/logout" class="col-1 btn btn-primary">Logout</a>
+</nav>
+<%- include('partials/nav') -%>
+<div class="container">
+  <div class="row mt-5">
+      <div class="col-6">
+          <div class="d-flex justify-content-between">
+              <p><strong>First Name</strong>: <%= user.firstName %></p>
+              <p><strong>Last Name</strong>: <%= user.lastName %></p>
+              <p><strong>Email</strong>: <%= user.email %></p>
+              <p><strong>DOB</strong>: <%= user.DOB %></p>
+          </div>
+          <div class="mt-5">
+            <h2>Upload Profile Picture</h2>
+            <form action="" enctype="multipart/form-data" method="POST">
+              <div class="mb-3">
+                <!-- <label for="imgUpload" class="form-label">Image</label> -->
+                <input type="file" class="form-control" id="imageUpload" name="file">
+              </div>
+              <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+            </form>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('partials/footer') -%>

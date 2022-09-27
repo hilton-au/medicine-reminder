@@ -1,0 +1,51 @@
+<nav class="row justify-content-end mt-2">
+  <a href="/profile" class=" col-1 btn btn-primary">Profile</a>
+  <a href="/logout" class="col-1 btn btn-primary">Logout</a>
+</nav>
+
+<%- include('partials/header') -%>
+
+<div class="container">
+    <table class="table table-hover  mt-5">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Medicine Name</th>
+          <th scope="col">Daily Frequency</th>
+          <th scope="col">Last Taken</th>
+          <th scope="col">Amount Taken Today</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody> 
+        <% for(var i=0; i<reminders.length; i++) {%>
+          <tr>
+            <th><%=i+1%></th>
+            <td><%=reminders[i].name%></td>
+            <td><%=`${reminders[i].frequency} x daily`%></td>
+            <td><%=reminders[i].lastTakenAt%></td>
+            <td><%=`${reminders[i].timesTaken} x`%></td>
+            <td>
+              <form action="/addTaken/<%=reminders[i]._id%>/?_method=PUT" method="POST">
+                <button type="submit" class="btn btn-primary">Taken</button>
+              </form>
+            </td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+
+    
+  <form action="/addMeds" method="POST">
+    <div class="mb-3">
+      <label for="medicineName" class="form-label">Medicine Name</label>
+      <input type="text" class="form-control" id="medicineName" name="medicineName">
+    </div>
+    <div class="mb-3">
+      <label for="frequency" class="form-label">Daily Frequency</label>
+      <input type="text" class="form-control" id="frequency" name="frequency">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>  
+<%- include('partials/footer') -%>

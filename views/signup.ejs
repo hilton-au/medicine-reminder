@@ -1,0 +1,49 @@
+<div class="row mt-5">
+    <div class="col-md-4 m-auto">
+      <main class="container card card-body text-center">
+        <%- include('partials/header') -%>
+              <section class="col-5 mt-6 m-auto">
+                  <% if (locals.messages.errors) { %>
+                      <% messages.errors.forEach( el => { %>
+                          <div class="alert alert-danger"><%= el.msg %></div>
+                      <% }) %>    
+                  <% } %>
+                  <% if (locals.messages.info) { %>
+                      <% messages.info.forEach( el => { %>
+                          <div class="alert alert-info"><%= el.msg %></div>
+                      <% }) %>    
+                  <% } %>
+                  <form action="/signup" method="POST">
+                      <div class="mb-3">
+                        <label for="firstName" class="form-label">First Name</label>
+                        <input type="text" class="form-control" id="firstName" name="firstName">
+                      </div>
+                      <div class="mb-3">
+                        <label for="lastName" class="form-label">Last Name</label>
+                        <input type="text" class="form-control" id="lastName" name="lastName">
+                      </div>
+                      <div class="mb-3">
+                        <label for="DOB" class="form-label">Date of Birth</label>
+                        <input type="date" class="form-control" id="DOB" name="DOB">
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+                      </div>
+                      <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password">
+                      </div>
+                      <div class="mb-3">
+                          <label for="confirmPassword" class="form-label">Confirm Password</label>
+                          <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
+                        </div>
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+              </section>
+      </main>
+   </div>
+</div>
+
+
+<%- include('partials/footer') -%>
